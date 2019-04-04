@@ -1,0 +1,8 @@
+[package]
+name = "fdm"
+version = "0.1.0"
+authors = ["halo <191267231@qq.com>"]
+edition = "2018"
+
+[dependencies]
+ndarray = "0.12.1"
