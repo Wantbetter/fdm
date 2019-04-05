@@ -1,11 +1,11 @@
 use ndarray::{Array, Array2, ShapeBuilder};
 
-#[derive(Debug, Clone)]
-pub struct Lame(Array2<f64>, Array2<f64>);
+// #[derive(Debug, Clone)]
+// pub struct Lame(Array2<f64>, Array2<f64>);
 
 // Lame.0 => lambda
 // Lame.1 => miu
-pub fn lame(vp: &Array2<f64>, vs: &Array2<f64>, p: &Array2<f64>) -> Lame {
+pub fn lame(vp: &Array2<f64>, vs: &Array2<f64>, p: &Array2<f64>) -> (Array2<f64>, Array2<f64>) {
     assert!(vp.shape() == vs.shape() && vs.shape() == p.shape());
 
     let rows = vp.rows();
@@ -23,7 +23,7 @@ pub fn lame(vp: &Array2<f64>, vs: &Array2<f64>, p: &Array2<f64>) -> Lame {
         p[[j, i]] * vs[[j, i]].powf(2.0)
     });
 
-    Lame(lame1, lame2)
+    (lame1, lame2)
 }
 
 // #[test]
